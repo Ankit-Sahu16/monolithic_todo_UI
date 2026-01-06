@@ -1,9 +1,9 @@
 trigger:
-- develop
+- main
 pool: Infra-agent2
 stages:
- - stage:StaticCodeAnalysis
-   Jobs:
+ - stage: StaticCodeAnalysis
+   jobs:
     - job: SonarQubeAnalysis
       steps:
       - task: PowerShell@2
