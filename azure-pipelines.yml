@@ -3,10 +3,13 @@ trigger:
 pool: Infra-agent2
 stages:
  - stage: StaticCodeAnalysis
+   displayName: stage1
    jobs:
     - job: SonarQubeAnalysis
+      displayName: job1
       steps:
       - task: PowerShell@2
+        displayName: SonarCodeAnalysis
         inputs:
           targetType: 'inline'
           script: |
