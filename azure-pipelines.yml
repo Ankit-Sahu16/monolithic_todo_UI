@@ -1,8 +1,14 @@
-trigger: none 
-pool: Default
-
-steps: 
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: 'Write-Host "Hello World"'
+trigger:
+- develop
+pool: Infra-agent2
+stages:
+ - stage:StaticCodeAnalysis
+   Jobs:
+    - job: SonarQubeAnalysis
+      steps:
+      - task: PowerShell@2
+        inputs:
+          targetType: 'inline'
+          script: |
+            npm install -g @sonar/scan
+            sonar -D sonar.host.url=http://localhost:9000 -D sonar.token=sqp_ca005f065ff35004dcd21ead96dd13a344a105ea -D sonar.projectKey=monolithic_app
