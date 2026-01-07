@@ -91,7 +91,7 @@ stages:
         displayName: copy build to vm
         inputs:
           sshEndpoint: 'sshconnection'
-          sourceFolder: '$(System.DefaultWorkingDirectory)/build'
+          sourceFolder: 'C:\build_file'
           contents: '**'
           targetFolder: 'home/azureadmin/'
           readyTimeout: '20000'
