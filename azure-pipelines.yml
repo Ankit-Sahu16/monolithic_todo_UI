@@ -2,7 +2,7 @@ trigger: none
 pool: Infra-agent2
 stages:
  - stage: StaticCodeAnalysis
-   displayName: stage1
+   
    jobs:
     - job: SonarQubeAnalysis
       displayName: job1
