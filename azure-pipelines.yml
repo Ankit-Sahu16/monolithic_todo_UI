@@ -57,18 +57,19 @@ stages:
    jobs:
     - job: ApplicationBuild_publishBuildArtifact
       steps:
-      - task: PowerShell@2
-        displayName: dependency install and build
-        inputs:
-          targetType: 'inline'
-          script: |
-            npm install
-            npm run build
+      # - task: PowerShell@2
+      #   displayName: dependency install and build
+      #   inputs:
+      #     targetType: 'inline'
+      #     script: |
+      #       npm install
+      #       npm run build
 
-      - task: PublishBuildArtifacts@1
+      - task: PublishPipelineArtifact@1
+        displayName: Publish artifact
         inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)/build'
-          ArtifactName: 'Build'
-          publishLocation: 'Container'
+          targetPath: '$(System.DefaultWorkingDirectory)/build'
+          artifact: 'Build'
+          publishLocation: 'pipeline'
 
     
