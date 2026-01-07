@@ -52,3 +52,15 @@ stages:
             npm install -g stylelint
             npm install -g stylelint-config-standard
             stylelint $(System.DefaultWorkingDirectory)/src --config stylelint.config.mjs
+
+ - stage: BuildAndPackage
+   jobs:
+    - job: ApplicationBuild
+      steps:
+      - task: PowerShell@2
+        displayName: dependency install and build
+        inputs:
+          targetType: 'inline'
+          script: |
+            npm install
+            npm run build
