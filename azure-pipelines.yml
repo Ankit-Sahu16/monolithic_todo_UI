@@ -91,9 +91,9 @@ stages:
         displayName: copy build to vm
         inputs:
           sshEndpoint: 'sshconnection'
-          sourceFolder: 'C:\build_file'
+          sourceFolder: 'C:\agent\build_file'
           contents: '**'
-          targetFolder: 'home/azureadmin/'
+          targetFolder: '/home/azureadmin/'
           readyTimeout: '20000'
       - task: SSH@0
         displayName: copy to Nginx web server
@@ -101,7 +101,5 @@ stages:
           sshEndpoint: 'sshconnection'
           runOptions: 'inline'
           inline: |
-            sudo apt update
-            sudo apt install nginx -y
-            cp -r home/azureadmin/* var/www/html
+            cp -r /home/azureadmin/* var/www/html
           readyTimeout: '20000'
