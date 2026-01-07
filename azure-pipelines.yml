@@ -5,7 +5,7 @@ stages:
    
    jobs:
     - job: SonarQubeAnalysis
-      displayName: job1
+      
       steps:
       - task: PowerShell@2
         displayName: SonarCodeAnalysis
